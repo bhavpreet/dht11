@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/stianeikeland/go-rpio"
@@ -11,14 +12,14 @@ func main() {
 	err := rpio.Open()
 	if err != nil {
 		fmt.Println("Some error occured", err)
-		exit(0)
+		os.Exit(-1)
 	}
 
 	defer rpio.Close()
 
 	var (
 		j         uint8
-		f         float
+		f         float32
 		dht11_dat [5]int
 	)
 
